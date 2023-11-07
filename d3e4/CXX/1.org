@@ -1,0 +1,157 @@
+#+title: Chestii in C++ - 1
+
+* Termeni (keywords) generali
+** Compilator
+- Cel care transforma codul tau in program executabil (binar)
+- Cel care iti spune ce erori ai (ERRORS/ERR)
+  - Pe langa asta, te mai si avertizeaza cand crede ca faci ceva gresit - desi uneori nu e cazul, ci chiar intentionezi codul tau sa fie asa - (WARNING/WARN)
+** Biblioteca / Librarie (gresit gramatical, desi se intelege ce vrei sa zici) / Library (Engleza)
+- Cod de tip terț (3rd party) (de altundeva) care defineste unele functii, tipuri, variabile, constante, preprocesoare, etc.
+** Atribuire
+- Asignare (gresit gramatical, desi se intelege ce vrei sa zici) / Assign (Engleza)
+** Conditionale
+- Are o conditie adevarata sau falsa
+  - True: Adevarat (~1~)
+  - False: Fals (~0~)
+* Preprocesoare
+- Incep cu ~#~
+- Nu se vor compila in codul final, ci doar spun compilatorului ce sa faca
+  - ~#include~ spune compilatorului sa 'includa' o biblioteca, adica sa copieze fiecare linie de cod din ea
+  - ~#define~ spune compilatorului sa 'defineasca' un fel de constanta care este valabila doar compilatorului, nu in program
+    - De exemplu, fie preprocesorul ~#define NAME "D3e4"~ , unde daca folosesti ~NAME~ in cod, ii spune compilatorului sa inlocuiasca ~NAME~ cu "D3e4"
+  - Si multe altele precum ~#ifdef~, ~#ifndef~, ~#warning~, ~#error~, ~#if~, ~#elif~, ~#else~, etc(nu trebuie sa le inveti pe toate acum)
+* Functii
+- Introduci ceva in el (exista posibilitatea sa nu introduci nimic)
+  - Introduci ceea ce este definit in paranteze
+    - De exemplu ~int myFunction(int a, int b)~, care cere un intreg ~a~ si un intreg ~b~
+    - Acestea se introduc la apelul functiei (cand scrii ca sa ruleze functia) tot in paranteze
+      - De exemplu ~myFunction(1, 2)~, unde introduc pe ~a~ ca 1 si ~b~ ca 2
+- Iti *returneaza* un singur lucru
+  - Poti vedea tipul de returnare dupa cum este definita functia
+    - De exemplu ~int myFunction(int a, int b)~ iti va returna un intreg, pentru ca inainte de idenfiticatorul ~myFunction~ este scris ~int~
+  - Returnarea se face in corpul functiei (intre acolade "{}") cu ~return~
+    - De exemplu
+      #+BEGIN_SRC cpp
+        int myFunction() {
+            return 0;
+        }
+      #+END_SRC
+      va returna valoarea 0.
+  - Tipul returnarii trebuie sa fie aceasi cu definita. De exemplu daca functia este definita ca sa returnezi un ~int~, vrei returna un intreg, nu un caracter (~char~).
+    - La tipul returnari ~void~ (vid), nu se va returna nimic:
+      #+BEGIN_SRC cpp
+        void mySecondFunction() {
+            return;
+        }
+      #+END_SRC
+  - Este important ca intotdeauna sa ai ~return~ intr-o functie, chiar si daca nu este neaparat nevoie (de exemplu cand functia ta se termina si e evident ca functia de va iesi (return))
+  - De obicei, atunci cand functia este facuta astfel incat valoarea returnarii sa arate o eroare in functie, valoarea 0 ca totul este OK si nu a existat erori, iar orice valoare non-zero (non-zero exit code) va arata ca a existat o valoare. Fiecare valoare va arata tipul de eroare dupa conventia dezvoltatorului, iar 1 de obicei arata ca a existat o eroare universala (de obicei atunci cand nu mai ai timp/chef sa te gandesti la ce erori se pot intampla si sa atribui fiecarei erori cate o valoare pe care sa o si documentezi, asa ca la orice eroare pui 1 indiferent de eroare).
+    - De exemplu:
+      - Daca ai erori de permisiune pentru citirea unui fisier, returneaza -2
+      - Daca fisierul nu exista, returneaza 6
+      - Daca nu ai nicio eroare, returneaza 0
+      - * Toate valorile in afara de 0 se dau dupa conventia dezvoltatorului (asa cum vrea el)
+* Constante
+- Sunt date care nu se schimba
+- Sunt marcate cu ~const~ inainte de tip si numele constantei
+- Singura exceptie de schimbare este atunci cand initializezi constanta fara vreo valoare, dar ii atribui mai tarziu o valoare, pe care nu o mai poti schimba
+  - De exemplu, cand vrei sa creezi o functie si vrei ca una dintre atribute sa fie o constanta:
+      #+BEGIN_SRC cpp
+        void mySecondFunction(const char value) {
+            std::cout << value << std::endl;
+            return;
+        }
+      #+END_SRC
+* Variabile
+- Sunt date care se pot schimba (dupa caz)
+- In ciuda constantelor, nu trebuie sa scrii niciun cuvant cheie, precum constanta face: ~const~. O variabila va fi automat variabila cand o definesti.
+* Tipuri
+- Dupa cum spune si titlul, variabilele/constante au *tipuri* de date
+- Acestea pot fi:
+  - Intregi:
+    - ~int~
+    - ~long~
+    - ~long long~
+    - etc.
+  - Caractere:
+    - ~char~
+  - Numere reale (cu virgula):
+    - ~float~
+    - ~double~
+  - Vid (mai special, se foloseste de obicei in functii cand nu vrei sa returnezi o valoare):
+    - ~void~
+* Condiționale (Au o conditie)
+- Acestea sunt comparatii (se compara doua valori)
+- Aceste comparatii se fac in mod matematic:
+  - Mai mic (Less than): ~a < b~
+  - Mai mare (Greater than): ~a > b~
+  - Egal (Equal): ~a == b~
+    - Atentie la doublu egal! Un singur egal inseamna atribuire!
+  - Nu este egal (Not Equal): ~a != b~
+  - Mai mic sau egal (Less or Equal than): ~a <= b~
+    - Atentie la ordine: ~=<~ este invalid. Ca sa retii mai bine, spune in minte "Mai mic (<) sau egal (=)" si scrie asa cum se aude
+  - Mai mare sau egal (Greater or Equal than): ~a >= b~
+    - Atentie la ordine: ~=>~ este invalid. Ca sa retii mai bine, spune in minte "Mai mare (>) sau egal (=)" si scrie asa cum se aude
+- In cazul in care *conditia* este indeplinita, aceasta este adevarata (true)
+- In caz contrar in care *conditia* nu este indeplinita, aceasta nu este adevarata (false)
+- In spatele unei conditii, exista un numar ~0~ sau ~1~. Acestea se pot imagina ca o grupare care are o masca/haina a valorii sale
+  - Conditia ADEVARATA (True) are valoarea 1
+    - De exemplu, ~(1 < 2)~ are valoarea 1
+  - Conditia FALSA (False) are valoarea 0
+    - De exemplu, ~(1 == 2)~ are valoarea 0
+- Acestea se folosesc in cazul in care ai nevoie de o conditionala
+  - De exemplu ~if~, care va rula codul din corpul ei numai daca conditia are valoarea 1 (este adevarata)
+  #+BEGIN_SRC cpp
+    if(1 != 2) /* 1 */ {
+        std::cout << "Aceasta conditie este adevarata, de asta ma poti vedea!" << std::endl;
+    }
+
+    if(1 == 2) /* 0 */ {
+        std::cout << "Aceasta conditie NU este adevarata, de asta nu ma poti vedea!" << std::endl;
+    }
+
+    if(1) {
+        std::cout << "Aceasta conditie este adevarata, de asta ma poti vedea!" << std::endl;
+    }
+
+    if(0) {
+        std::cout << "Aceasta conditie este NU adevarata, de asta ma nu poti vedea!" << std::endl;
+    }
+
+    if(true) /* 1 */ {
+        std::cout << "Aceasta conditie este adevarata, de asta ma poti vedea!" << std::endl;
+    }
+
+    if(false) /* 0 */ {
+        std::cout << "Aceasta conditie este NU adevarata, de asta ma nu poti vedea!" << std::endl;
+    }
+
+    if(! 1) /* 0 */ {
+        std::cout << "Aceasta conditie NU este adevarata, de asta ma nu poti vedea!" << std::endl;
+    }
+
+    if(! 0) /* 1 */ {
+        std::cout << "Aceasta conditie este adevarata, de asta ma poti vedea!" << std::endl;
+    }
+
+    if(! true) /* 0 */ {
+        std::cout << "Aceasta conditie NU este adevarata, de asta nu ma poti vedea!" << std::endl;
+    }
+
+    if(! false) /* 1 */ {
+        std::cout << "Aceasta conditie este adevarata, de asta ma poti vedea!" << std::endl;
+    }
+  #+END_SRC
+  - In cazul in care vrei sa folosesti rezultatul conditiei ca o valoare, o poti face in mod normal:
+  #+BEGIN_SRC cpp
+    int a = (1 != 2);  /* 1 */
+    int b = (1 == 2);  /* 0 */
+    int c = (true);    /* 1 */
+    int d = (false);   /* 0 */
+    int e = (! 1);     /* 0 */
+    int f = (! 0);     /* 1 */
+    int g = (! true);  /* 0 */
+    int h = (! false); /* 1 */
+
+    std::cout << a << ' ' << b << << ' ' << c << ' ' << d << ' ' << e << ' ' << f << ' ' << g << ' ' << h << std::endl; /* 1 0 1 0 0 1 0 1 */
+  #+END_SRC
