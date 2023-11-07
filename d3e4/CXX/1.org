@@ -4,7 +4,7 @@
 ** Compilator
 - Cel care transforma codul tau in program executabil (binar)
 - Cel care iti spune ce erori ai (ERRORS/ERR)
-  - Pe langa asta, te mai si avertizeaza cand crede ca faci ceva gresit - desi uneori nu e cazul, ci chiar intentionezi codul tau sa fie asa - (WARNING/WARN)
+- Pe langa asta, te mai si avertizeaza cand crede ca faci ceva gresit - desi uneori nu e cazul, ci chiar intentionezi codul tau sa fie asa - (WARNING/WARN)
 ** Biblioteca / Librarie (gresit gramatical, desi se intelege ce vrei sa zici) / Library (Engleza)
 - Cod de tip terț (3rd party) (de altundeva) care defineste unele functii, tipuri, variabile, constante, preprocesoare, etc.
 ** Atribuire
@@ -18,7 +18,7 @@
 - Nu se vor compila in codul final, ci doar spun compilatorului ce sa faca
   - ~#include~ spune compilatorului sa 'includa' o biblioteca, adica sa copieze fiecare linie de cod din ea
   - ~#define~ spune compilatorului sa 'defineasca' un fel de constanta care este valabila doar compilatorului, nu in program
-    - De exemplu, fie preprocesorul ~#define NAME "D3e4"~ , unde daca folosesti ~NAME~ in cod, ii spune compilatorului sa inlocuiasca ~NAME~ cu "D3e4"
+    - De exemplu, fie preprocesorul ~#define NAME "D3e4"‎‎.~‎‎‎ , unde daca folosesti ~NAME~ in cod, ii spune compilatorului sa inlocuiasca ~NAME~ cu "D3e4"
   - Si multe altele precum ~#ifdef~, ~#ifndef~, ~#warning~, ~#error~, ~#if~, ~#elif~, ~#else~, etc(nu trebuie sa le inveti pe toate acum)
 * Functii
 - Introduci ceva in el (exista posibilitatea sa nu introduci nimic)
