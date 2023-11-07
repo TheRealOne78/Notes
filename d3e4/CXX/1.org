@@ -45,7 +45,7 @@
         }
       #+END_SRC
   - Este important ca intotdeauna sa ai ~return~ intr-o functie, chiar si daca nu este neaparat nevoie (de exemplu cand functia ta se termina si e evident ca functia de va iesi (return))
-  - De obicei, atunci cand functia este facuta astfel incat valoarea returnarii sa arate o eroare in functie, valoarea 0 ca totul este OK si nu a existat erori, iar orice valoare non-zero (non-zero exit code) va arata ca a existat o valoare. Fiecare valoare va arata tipul de eroare dupa conventia dezvoltatorului, iar 1 de obicei arata ca a existat o eroare universala (de obicei atunci cand nu mai ai timp/chef sa te gandesti la ce erori se pot intampla si sa atribui fiecarei erori cate o valoare pe care sa o si documentezi, asa ca la orice eroare pui 1 indiferent de eroare).
+  - De obicei, atunci cand functia este facuta astfel incat valoarea returnarii sa arate o eroare in functie, valoarea 0 arata ca totul este OK si nu a existat erori, iar orice valoare non-zero (non-zero exit code) va arata ca a existat o valoare. Fiecare valoare va arata tipul de eroare dupa conventia dezvoltatorului, iar 1 de obicei arata ca a existat o eroare universala (de obicei atunci cand nu mai ai timp/chef sa te gandesti la ce erori se pot intampla si sa atribui fiecarei erori cate o valoare pe care sa o si documentezi, asa ca la orice eroare pui 1 indiferent de eroare).
     - De exemplu:
       - Daca ai erori de permisiune pentru citirea unui fisier, returneaza -2
       - Daca fisierul nu exista, returneaza 6
